@@ -173,7 +173,6 @@ void Setup(AlxWindow* w){
 		) 
 	},sizeof(Slider));
 }
-
 void Update(AlxWindow* w){
 	Scene_Update(&scene,window.Strokes,GetMouse(),GetMouseBefore());
 
@@ -181,7 +180,6 @@ void Update(AlxWindow* w){
 
 	Scene_Render(WINDOW_STD_ARGS,&scene);
 }
-
 void Delete(AlxWindow* w){
     close(sock);
 
