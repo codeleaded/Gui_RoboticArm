@@ -116,7 +116,11 @@ void Setup(AlxWindow* w){
     //int valread = read(sock, buffer, 1024);
     //printf("Antwort vom Server: %s\n", buffer);
 
-	scene = Scene_New();
+	scene = Scene_New(
+        NULL,
+        (Rect){ 0.0f,0.0f,(float)w->Width,(float)w->Height },
+        BLACK
+    );
 
 	Scene_Add(&scene,(Slider[]){
 		Slider_New(
@@ -174,7 +178,9 @@ void Setup(AlxWindow* w){
 	},sizeof(Slider));
 }
 void Update(AlxWindow* w){
-	Scene_Update(&scene,window.Strokes,GetMouse(),GetMouseBefore());
+	Scene_Adapt(&scene,GetWidth(),GetHeight());
+	Scene_Update(&scene);
+	Scene_Input(&scene,window.Strokes,GetMouse(),GetMouseBefore());
 
 	Clear(BLACK);
 
